@@ -1,0 +1,35 @@
+<html>
+	<head></head>
+	<body>
+		test
+		<form action="javascript:postaction()">
+			<input type="text" name="name" id="name"/>
+			<input type="test" name="description" id="description"/>
+			<input type="date" name="deadline" id="deadline"/>
+			<input type="submit"/>
+		</form>
+		<div id="content" style="border: 1px solid;"/>
+		<script type="text/javascript">
+
+function postaction(){
+	var todo=[
+		{"name":document.getElementById("name"),"description":document.getElementById("description"),"deadline":document.getElementById("desdline")}
+	];
+	localStorage.setItem("stock",todo);
+	load();
+}
+
+function load(){
+	var content=document.getElementById("content");
+	
+	content.innerHTML=localStorage.getItem("stock");
+	console.log("storage event");
+}
+
+window.onload=load;
+
+window.addEventListener("storage",load,false);
+
+		</script>
+	</body>
+</html>
