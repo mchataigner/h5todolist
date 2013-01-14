@@ -70,7 +70,7 @@ function load(){
 			}
 
 			if(data[i].url == "") name = data[i].title;
-			else name = "<a href='http://"+data[i].url+"'>"+data[i].title+"</a>";
+			else name = "<a href='//"+data[i].url+"'>"+data[i].title+"</a>";
 
 			if(data[i].deadline != "") date=" ("+data[i].deadline+") ";
 
