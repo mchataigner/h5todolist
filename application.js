@@ -62,25 +62,25 @@ function load(){
 			var style="";
 			var checked="";
 			var name="";
+			var date="";
+			var arrow = "";
 			if(data[i].done){
 				style="done";
 				checked="checked='"+data[i].done+"' ";
 			}
+
 			if(data[i].url == "") name = data[i].name;
 			else name = "<a href='http://"+data[i].url+"'>"+data[i].name+"</a>";
-			contentString+="<span class='"+style+"'>"+name+" => "+data[i].description+" "+data[i].deadline+
+
+			if(data[i].deadline != "") date=" ("+data[i].deadline+") ";
+
+			if(data[i].deadline != "" || data[i].description != "") arrow = " => ";
+
+			contentString+="<span class='"+style+"'>"+name+arrow+data[i].description+date+
 				" <input type='checkbox' name='done' value='done' "+checked+" onchange='update("+i+","+!data[i].done+")'/></span> "+
 				"<a href='javascript:remove("+i+")'>remove</a> "+
 				"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
 				"<br/>";
-/*			}
-			else{
-				contentString+="<span><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
-					" <input type='checkbox' name='done' value='done' onchange='update("+i+","+!data[i].done+")'/></span> "+
-					"<a href='javascript:remove("+i+")'>remove</a> "+
-					"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
-					"<br/>";
-			}*/
 		};
 		content.innerHTML=contentString;
 	}
