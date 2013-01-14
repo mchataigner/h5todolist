@@ -67,6 +67,7 @@ function load(){
 	}
 	else
 		content.innerHTML="";
+	document.getElementById("name").focus();
 }
 
 window.onload=load;
