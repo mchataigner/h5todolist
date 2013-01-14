@@ -5,7 +5,7 @@ function clear(){
 }
 
 function postaction(){
-	var name=document.getElementById("name").value;
+	var name=document.getElementById("title").value;
 	var description=document.getElementById("description").value;
 	var url=document.getElementById("url").value;
 	var deadline=document.getElementById("deadline").value;
@@ -13,7 +13,7 @@ function postaction(){
 	if(name == "" && url != "") name = url;
 	if(name == "")return;
 	var data=loadData();
-	var todo={"name":name,"description":description,"url":url,"deadline":deadline,"done":done};
+	var todo={"title":name,"description":description,"url":url,"deadline":deadline,"done":done};
 	data.push(todo);
 	saveData(data);
 	var form=document.getElementById("form");
@@ -69,8 +69,8 @@ function load(){
 				checked="checked='"+data[i].done+"' ";
 			}
 
-			if(data[i].url == "") name = data[i].name;
-			else name = "<a href='http://"+data[i].url+"'>"+data[i].name+"</a>";
+			if(data[i].url == "") name = data[i].title;
+			else name = "<a href='http://"+data[i].url+"'>"+data[i].title+"</a>";
 
 			if(data[i].deadline != "") date=" ("+data[i].deadline+") ";
 
@@ -79,14 +79,14 @@ function load(){
 			contentString+="<span class='"+style+"'>"+name+arrow+data[i].description+date+
 				" <input type='checkbox' name='done' value='done' "+checked+" onchange='update("+i+","+!data[i].done+")'/></span> "+
 				"<a href='javascript:remove("+i+")'>remove</a> "+
-				"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
+				"<a href='https://www.google.com/search?q="+data[i].title+"'>google("+data[i].title+")</a>"+
 				"<br/>";
 		};
 		content.innerHTML=contentString;
 	}
 	else
 		content.innerHTML="";
-	document.getElementById("name").focus();
+	document.getElementById("title").focus();
 }
 
 window.onload=load;
