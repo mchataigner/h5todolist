@@ -5,13 +5,15 @@ function clear(){
 }
 
 function postaction(){
-	var name=document.getElementById("name");
-	var description=document.getElementById("description");
-	var url=document.getElementById("url");
-	var deadline=document.getElementById("deadline");
-	var done=document.getElementById("done");
+	var name=document.getElementById("name").value;
+	var description=document.getElementById("description").value;
+	var url=document.getElementById("url").value;
+	var deadline=document.getElementById("deadline").value;
+	var done=document.getElementById("done").checked;
+	if(name=="" and url!="")name=url;
+	if(name=="")return;
 	var data=loadData();
-	var todo={"name":name.value,"description":description.value,"url":url.value,"deadline":deadline.value,"done":done.checked};
+	var todo={"name":name,"description":description,"url":url,"deadline":deadline,"done":done};
 	data.push(todo);
 	saveData(data);
 	var form=document.getElementById("form");
@@ -63,11 +65,12 @@ function load(){
 				style="done";
 				checked="checked='"+data[i].done+"' ";
 			}
-				contentString+="<span class='"+style+"'><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
-					" <input type='checkbox' name='done' value='done' "+checked+" onchange='update("+i+","+!data[i].done+")'/></span> "+
-					"<a href='javascript:remove("+i+")'>remove</a> "+
-					"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
-					"<br/>";
+
+			contentString+="<span class='"+style+"'><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
+				" <input type='checkbox' name='done' value='done' "+checked+" onchange='update("+i+","+!data[i].done+")'/></span> "+
+				"<a href='javascript:remove("+i+")'>remove</a> "+
+				"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
+				"<br/>";
 /*			}
 			else{
 				contentString+="<span><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
