@@ -61,12 +61,14 @@ function load(){
 		for (var i = data.length - 1; i >= 0; i--) {
 			var style="";
 			var checked="";
+			var name="";
 			if(data[i].done){
 				style="done";
 				checked="checked='"+data[i].done+"' ";
 			}
-
-			contentString+="<span class='"+style+"'><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
+			if(data[i].url == "") name = data[i].name;
+			else name = "<a href='http://"+data[i].url+"'>"+data[i].name+"</a>";
+			contentString+="<span class='"+style+"'>"+name+" => "+data[i].description+" "+data[i].deadline+
 				" <input type='checkbox' name='done' value='done' "+checked+" onchange='update("+i+","+!data[i].done+")'/></span> "+
 				"<a href='javascript:remove("+i+")'>remove</a> "+
 				"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
