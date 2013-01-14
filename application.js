@@ -65,7 +65,7 @@ function load(){
 					"<br/>";
 			}
 			else{
-				contentString+="<span><a href='"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
+				contentString+="<span><a href='http://"+data[i].url+"'>"+data[i].name+"</a> => "+data[i].description+" "+data[i].deadline+
 					" <input type='checkbox' name='done' value='done' onchange='update("+i+","+!data[i].done+")'/></span> "+
 					"<a href='javascript:remove("+i+")'>remove</a> "+
 					"<a href='https://www.google.com/search?q="+data[i].name+"'>google("+data[i].name+")</a>"+
