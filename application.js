@@ -10,8 +10,8 @@ function postaction(){
 	var url=document.getElementById("url").value;
 	var deadline=document.getElementById("deadline").value;
 	var done=document.getElementById("done").checked;
-	if(name=="" and url!="")name=url;
-	if(name=="")return;
+	if(name == "" and url != "") name = url;
+	if(name == "")return;
 	var data=loadData();
 	var todo={"name":name,"description":description,"url":url,"deadline":deadline,"done":done};
 	data.push(todo);
