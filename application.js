@@ -1,3 +1,7 @@
+$('input[type="url"]').bind('invalid', function() {
+    return false;
+});
+
 function TodoListCtrl($scope){
 
 	$scope.todo={ title: "", description: "", url: "", deadline: "", done: false }
@@ -10,8 +14,12 @@ function TodoListCtrl($scope){
 		
 		console.log("add");
 		
-		if(todo.title == "")todo.title = todo.url;
+		console.log("\""+todo.title+"\""+"\""+todo.url+"\"");
+
+		if(todo.title == "" || todo.title == null)todo.title = todo.url;
+
 		if(todo.url != "" && !urlparser.test(todo.url))todo.url="//"+todo.url;
+
 		this.todos.push(todo);
 		this.todo={ title: "", description: "", url: "", deadline: "", done: false }
 		this.save();
