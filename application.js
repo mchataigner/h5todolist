@@ -20,6 +20,8 @@ function TodoListCtrl($scope){
 
 		if(todo.url != "" && !urlparser.test(todo.url))todo.url="//"+todo.url;
 
+		if(todo.title.length > 15) todo.shortitle = todo.title;
+
 		this.todos.push(todo);
 		this.todo={ title: "", description: "", url: "", deadline: "", done: false }
 		this.save();
@@ -58,6 +60,14 @@ function TodoListCtrl($scope){
 	$scope.focus = function(){
 		document.getElementById("title").focus();
 	}
+
+	$scope.shorttitle = function(todo){
+		var limitesize=25;
+		if(todo.title.length > limitesize) return todo.title.substr(0,limitesize-3)+"\u2026";
+		else return todo.title;
+	}
+
+
 
 	window.remove = function(i){$scope.remove(i);}
 

@@ -22,31 +22,28 @@
 			<ul>
 				<li>
 					<div class="row">
-						<div class="span2">title</div>
-						<div class="span2">deadline</div>
-						<div class="span5">description</div>
-						<div class="span3">links</div>
+						<div class="span4"><strong>title</strong></div>
+						<div class="span2"><strong>deadline</strong></div>
+						<div class="span6"><strong>description</strong></div>
 					</div>
 				</li>
 				<li ng-repeat="todo in todos">
 					<div class="row ng-cloack">
-						<div ng-class='{done: todo.done}' class="span2">
+						<div ng-class='{done: todo.done}' class="span4">
 							<input 
 								type='checkbox' 
 								name='done' 
 								value='done' 
 								ng-model='todo.done'
 								ng-change="update()"/>
-							<a href='{{ todo.url || "javascript:void(0);"}}' ng-bind="todo.title"></a>
-							<span ng-class='{done: todo.done}' class="right" ng-bind-template=" => "></span>
+							<a href='{{ todo.url || "javascript:void(0);"}}' ng-bind-template="{{shorttitle(todo)}}" title="{{todo.title}}"></a>
+							<span ng-class='{done: todo.done}' class="right" >
+								 => <a ng-href='javascript:remove({{$index}})'><img src="close.ico" title="remove({{todo.title}})" alt="remove({{todo.title}})"></img></a> 
+								<a href='https://www.google.com/search?q={{todo.title}}'><img src="google.ico" title="google({{todo.title}})" alt="google({{todo.title}})"></img></a>
+							</span>
 						</div>
 						<div ng-class='{done: todo.done}' class="span2" ng-cloack>{{todo.deadline}}<span ng-bind="todo.deadline"></span></div>
-						<div ng-class='{done: todo.done}' class="span5" ng-cloack>{{todo.description}}<span ng-bind="todo.description"></span></div>
-						<div ng-class='{done: todo.done}' class="span3" ng-cloack>
-							<!--button onclick="javascript:remove({{$index}})">remove</button-->
-							<a ng-href='javascript:remove({{$index}})'>remove <span ng-bind-template="remove"></span></a> 
-							<a href='https://www.google.com/search?q={{todo.title}}'>google <span ng-bind-template="google({{todo.title}})"></span></a>
-						</div>
+						<div ng-class='{done: todo.done}' class="span6" ng-cloack>{{todo.description}}<span ng-bind="todo.description"></span></div>
 					</div>
 				</li>
 			</ul>
