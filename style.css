@@ -1,2 +1,14 @@
 a { text-decoration: none; }
-.done { text-decoration: line-through; }
+
+.done, .row .done, div.done, a.done { text-decoration: line-through; }
+
+.right {
+	float: right;
+	clear: right;
+	margin-right: 5px;
+}
+
+li {
+	list-style: none;
+	text-decoration: none;
+}
